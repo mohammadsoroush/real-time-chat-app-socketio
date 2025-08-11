@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "remixicon/fonts/remixicon.css";
+import type { Metadata } from "next";
+import { Outfit } from "next/font/google";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import { Content_provider } from "@/provider/layout_provider";
+import { Header } from "@/component/header";
+import { Redux_provider } from "@/provider/redux_provider";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const outfit = Outfit({
   subsets: ["latin"],
+  variable: "--font-outfit",
 });
 
 export const metadata: Metadata = {
@@ -23,11 +23,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="en" data-theme="light">
+      <body>
+        <Redux_provider>
+          <div
+            style={{
+              background: "linear-gradient(to right,  #1565c0,#b92b27)",
+            }}
+            className="flex flex-col  h-screen "
+          >
+            <Header />
+            <Content_provider>{children}</Content_provider>
+          </div>
+        </Redux_provider>
       </body>
     </html>
   );
