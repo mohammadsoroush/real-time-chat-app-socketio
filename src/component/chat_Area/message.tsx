@@ -83,6 +83,10 @@ export const Message = () => {
   const getAllMessages_from_ServerAction = async () => {
     try {
       setLoading(true);
+      if (!selectedChat?._id) {
+        return;
+      }
+
       const response = await GetMessagesFromMessageModal(selectedChat?._id);
 
       if (response?.error) {
