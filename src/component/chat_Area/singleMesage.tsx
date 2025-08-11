@@ -47,7 +47,9 @@ export const SingleMessage = ({ message }: { message: messageType }) => {
 
           {SENDER_IS_ME && (
             <span className="text-[14px] text-blue-200 ml-2">
-              {message.readBy?.some((id) => id !== currentUserData?._id) ? (
+              {message.readBy?.some(
+                (user) => user._id !== currentUserData?._id
+              ) ? (
                 <i className="ri-check-double-line"></i>
               ) : (
                 <i className="ri-check-line"></i>

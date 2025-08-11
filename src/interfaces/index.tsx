@@ -13,7 +13,7 @@ export interface chatType {
   users: UserType[];
   createdBy: UserType;
   lastMessage: messageType;
-  isGroupChat: Boolean;
+  isGroupChat: boolean;
   groupName: string;
   groupProfilePicture: string;
   groupBio: string;

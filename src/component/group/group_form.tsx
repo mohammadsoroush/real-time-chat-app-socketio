@@ -18,7 +18,7 @@ export const Group_form = ({
   const router = useRouter();
   const { currentUserData } = useSelector((state: RootState) => state.user);
   const [userId, setUserId] = useState<string[]>(
-    initialData?.users?.map((user) => user) || []
+    initialData?.users?.map((user:any) => user) || []
   );
 
   console.log("userId:", userId);

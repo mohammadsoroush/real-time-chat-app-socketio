@@ -2,10 +2,10 @@
 import React from "react";
 import { Recipient } from "./recipient";
 import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
 import Image from "next/image";
 import { Message } from "./message";
 import { Send_Message } from "./send_Message";
+import { RootState } from "@/redux/store";
 
 export const ChatArea = () => {
   const selectedChat = useSelector(

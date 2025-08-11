@@ -1,26 +1,29 @@
 import { chatType } from "@/interfaces";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+export interface ChatState {
+  // اینجا export اضافه شد
+  chat: chatType[];
+  selectedChat: chatType | null;
+}
+
+const initialState: ChatState = {
+  chat: [],
+  selectedChat: null,
+};
 
 const chatSlice = createSlice({
   name: "chat",
-  initialState: {
-    chat: [],
-    selectedChat: null,
-  },
+  initialState,
   reducers: {
-    setChat: (state, action) => {
+    setChat: (state, action: PayloadAction<chatType[]>) => {
       state.chat = action.payload;
     },
-    setSelectedChat: (state, action) => {
+    setSelectedChat: (state, action: PayloadAction<chatType | null>) => {
       state.selectedChat = action.payload;
     },
   },
 });
 
 export const { setChat, setSelectedChat } = chatSlice.actions;
-export default chatSlice;
-
-export interface chatState {
-  chat: chatType[];
-  selectedChat: chatType | null;
-}
+export default chatSlice.reducer;

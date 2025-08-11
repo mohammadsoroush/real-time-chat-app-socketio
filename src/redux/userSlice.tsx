@@ -1,24 +1,32 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { UserType } from "@/interfaces"; // اگر لازم داری اینجا وارد کن
+
+interface UserState {
+  currentUserData: UserType | null;
+  currentUserId: string;
+  onlineUsers: string[]; // فقط شناسه‌ها (آیدی‌ها) ذخیره میشه
+}
+
+const initialState: UserState = {
+  currentUserData: null,
+  currentUserId: "",
+  onlineUsers: [],
+};
 
 const userSlice = createSlice({
   name: "user",
-  initialState: {
-    currentUserData: null,
-    currentUserId: "",
-    onlineUsers: [],
-  },
+  initialState,
   reducers: {
-    setonlineUsers: (state, action) => {
+    setonlineUsers: (state, action: PayloadAction<string[]>) => {
       state.onlineUsers = action.payload;
     },
     RemoveCurrentUserData: (state) => {
       state.currentUserData = null;
     },
-    SetcurrentUserData: (state, action) => {
+    SetcurrentUserData: (state, action: PayloadAction<UserType>) => {
       state.currentUserData = action.payload;
     },
-
-    SetcurrentUserId: (state, action) => {
+    SetcurrentUserId: (state, action: PayloadAction<string>) => {
       state.currentUserId = action.payload;
     },
   },
@@ -31,4 +39,4 @@ export const {
   setonlineUsers,
 } = userSlice.actions;
 
-export default userSlice;
+export default userSlice.reducer;

@@ -2,7 +2,7 @@
 import { RootState } from "@/redux/store";
 import Image from "next/image";
 import { useSelector } from "react-redux";
-import { chatType } from "@/interfaces";
+import { chatType, UserType } from "@/interfaces";
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import { useRouter } from "next/navigation";
@@ -15,6 +15,9 @@ export const Recipient = () => {
   const selectedChat = useSelector(
     (state: RootState) => state.chat.selectedChat
   ) as chatType | null;
+  if (!selectedChat) {
+    return null;
+  }
 
   const { currentUserData } = useSelector((state: RootState) => state.user);
 
@@ -25,9 +28,10 @@ export const Recipient = () => {
     chatName = selectedChat.groupName;
     chatImage = selectedChat.groupProfilePicture || "/user.png";
   } else {
-    const recipient = selectedChat?.users.find(
-      (user: any) => user._id !== currentUserData?._id
+    const recipient = selectedChat.users.find(
+      (user: UserType) => user._id !== currentUserData?._id
     );
+
     chatName = recipient?.name || "Unknown";
     chatImage = recipient?.profilePicture || "/user.png";
   }

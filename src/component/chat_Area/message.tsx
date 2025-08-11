@@ -4,14 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { SingleMessage } from "./singleMesage";
 import socket from "@/config/socketIO-config";
-import { chatState } from "@/redux/chatSlice";
+import { RootState } from "@/redux/store";
+
+// import { chatState } from "@/redux/chatSlice";
 
 export const Message = () => {
   const [messages, setMessages] = useState<messageType[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const { chat, selectedChat }: chatState = useSelector(
-    (state: any) => state.chat
-  );
+  const { chat, selectedChat } = useSelector((state: RootState) => state.chat);
 
   const { currentUserData } = useSelector((state: any) => state.user);
 

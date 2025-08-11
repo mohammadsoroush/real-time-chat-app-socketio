@@ -1,11 +1,8 @@
 "use client";
 
-import { chatState, setChat, setSelectedChat } from "@/redux/chatSlice";
+import { ChatState, setChat, setSelectedChat } from "@/redux/chatSlice";
 import { GetAllChats } from "@/serverAction/chat-action";
-import {
-  clearUnreadCount,
-  clearUnreadCount_AddUnreadBy,
-} from "@/serverAction/clearUnreadCount";
+import { clearUnreadCount_AddUnreadBy } from "@/serverAction/clearUnreadCount";
 import { OnlineIndicator } from "./OnlineIndicator";
 import Image from "next/image";
 import React, { useEffect } from "react";
@@ -16,7 +13,7 @@ import { messageType } from "@/interfaces";
 export const ChatList = () => {
   const dispatch = useDispatch();
   const { currentUserData } = useSelector((state: any) => state.user);
-  const { chat, selectedChat }: chatState = useSelector(
+  const { chat, selectedChat }: ChatState = useSelector(
     (state: any) => state.chat
   );
 

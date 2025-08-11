@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import socket from "@/config/socketIO-config";
+import { RootState } from "@/redux/store";
 
 export const ChatHeader = () => {
   const router = useRouter();
@@ -16,8 +17,8 @@ export const ChatHeader = () => {
   const [loading, setLoading] = React.useState<boolean>(false);
   const [user, setUser] = React.useState<UserType[]>([]);
 
-  const { currentUserData } = useSelector((state) => state.user);
-  const { chat } = useSelector((state) => state.chat);
+  const { currentUserData } = useSelector((state: RootState) => state.user);
+  const { chat } = useSelector((state: RootState) => state.chat);
   console.log("قبلا چت داشتیم باهاشون:", chat);
   const getUser = async () => {
     try {

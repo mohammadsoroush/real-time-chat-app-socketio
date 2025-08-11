@@ -46,15 +46,15 @@ export const Header = () => {
   React.useEffect(() => {
     GetCurrentUser();
   }, []);
+function InfoRow({ label, value }: { label: string; value: string | number | undefined }) {
+  return (
+    <div className="flex justify-between items-center border-b border-dashed pb-2">
+      <span className="font-semibold text-gray-600">{label}</span>
+      <span className="text-gray-900 truncate">{value}</span>
+    </div>
+  );
+}
 
-  function InfoRow({ label, value }) {
-    return (
-      <div className="flex justify-between items-center border-b border-dashed pb-2">
-        <span className="font-semibold text-gray-600">{label}</span>
-        <span className="text-gray-900 truncate">{value}</span>
-      </div>
-    );
-  }
 
   return (
     <nav className="shadow-sm ">

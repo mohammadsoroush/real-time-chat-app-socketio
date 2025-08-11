@@ -137,7 +137,7 @@ export const Send_Message = () => {
         ></i>
         {showEmojiPicker && (
           <div className="absolute bottom-10 left-0 z-10">
-            <EmojiPicker onEmojiClick={handleEmojiClick} locale="en" />
+            <EmojiPicker onEmojiClick={handleEmojiClick}  />
           </div>
         )}
       </div>
