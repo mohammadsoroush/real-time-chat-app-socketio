@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { Group_form } from "@/component/group/group_form";
 import { UserType } from "@/interfaces";
 import userModel from "@/models/userModel";
