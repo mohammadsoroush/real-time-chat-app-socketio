@@ -12,7 +12,7 @@ export const Group_form = ({
   initialData = null,
 }: {
   user: UserType[];
-  initialData: any;
+  initialData?: any;
 }) => {
   console.log("initial:", initialData);
   const router = useRouter();
